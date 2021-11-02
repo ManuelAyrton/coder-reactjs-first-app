@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+
+.app {
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(25deg, rgba(0,0,0,1) 0%, rgba(52,52,52,1) 100%);
+    min-height: 100vh;
+    list-style: none;
+    list-style-type: none;
+    color: #bdbdbd;
+}
+
+.headerContainer{
+    margin: 0 20px;
+    border-left: solid 2px #bdbdbd;
+    border-right: solid 2px #bdbdbd;
+    border-bottom: solid 2px #bdbdbd;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+
+}
+.appHeader{
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem 0;
+    margin: 0 2rem;
+    justify-content: space-between;
+}
+.brand{
+    align-self: center;
+    font-size: 3rem;
+    color: gold;
+    font-weight: 700;
+    font-style: italic;
+    transition: 0.3s all ease 0s;
+}
+.brand:hover{
+    transform: scale(1.05);
+    text-shadow: -3px 3px 0px #bb3f3f;
+    cursor: pointer;
+}
+ul{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+ul li{
+    padding: 0.5em 0.75em;
+    margin: 0 0.5em;
+    font-size: 1.1rem;
+    transition: 0.3s all ease 0s;
+}
+ul li:hover{
+    transform: scale(1.08);
+    color: gold;
+    cursor: pointer;
+}
