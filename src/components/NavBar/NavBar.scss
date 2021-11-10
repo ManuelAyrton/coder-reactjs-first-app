@@ -1,0 +1,71 @@
+/* ----- HEADER ----- */
+
+
+.headerContainer{
+    padding: 0 20px;
+    border-left: solid 2px #dd9f00;
+    border-right: solid 2px #dd9f00;
+    border-bottom: solid 2px #dd9f00;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    justify-content: space-between!important;
+}
+.brand{
+    align-self: center;
+    margin-left: 5%;
+    font-size: 3rem!important;
+    color: #dd9f00!important;
+    font-weight: 700;
+    font-style: italic;
+    transition: 0.3s all ease 0s;
+    text-decoration: none;
+    text-shadow: -1px 3px 5px #797979;
+    &:hover{
+        transform: scale(1.05);
+        text-shadow: -3px 3px 0px #bb3f3f;
+        cursor: pointer;
+        color: gold;
+    }
+}
+.appHeader{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em 0;
+    margin: 0 2rem;
+    justify-content: space-between;
+}
+.nav-link{
+    color: #bdbdbd!important;
+    font-weight: 300;
+}
+.nav-link, .navbar-nav{
+    margin: 0 20px;
+}
+.dropdown-menu{
+    border-radius: 20px!important;
+    overflow: hidden;
+    border-left: 1px solid #bb3f3f!important;
+    border-right: 1px solid #bb3f3f!important;
+    border-top: 5px solid #bb3f3f!important;
+    border-bottom: 5px solid #bb3f3f!important;
+}
+.dropdown-item{
+    transition: 0.2s all ease 0s;
+    &:hover{
+        background: #dd9f00!important;
+
+    }
+}
+#contactoButton{
+    color: #bdbdbd;
+    text-decoration: none;
+    align-self: center;
+    border-radius: 20px;
+    padding: 0.3em 0.5em;
+    transition: 0.3s all 0s ease-in-out;
+}
+
+
+/*----- FIN DE HEADER -----*/
