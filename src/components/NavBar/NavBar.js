@@ -1,7 +1,6 @@
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import './NavBar.scss'
 import { CartWidget } from '../CartWidget/CartWidget.js'
-import { ItemListContainer } from '../ItemListContainer/ItemListContainer'
 
 
 export default function NavBar() {
@@ -22,7 +21,6 @@ export default function NavBar() {
                 </Nav>
                 <CartWidget />
             </Navbar>
-            <ItemListContainer greeting="BIENVENIDO AL HOME" />
         </>
 
     )
