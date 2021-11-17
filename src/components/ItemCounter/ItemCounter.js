@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ItemCounter.scss'
-import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { Container } from 'react-bootstrap'
 
 
-export const ItemCounter = ({producto, stock}) => {
+export const ItemCounter = ({stock}) => {
 
     let [items, setItems] = useState(0)
 
@@ -42,30 +40,23 @@ export const ItemCounter = ({producto, stock}) => {
     }, [items])
 
     const respuesta = () => {
-        if( items == 0 ) {
+        if( items === 0 ) {
             alert("No agregaste nada al carrito!")
+        } else if ( items === 1 ) {
+        alert(`Agregaste ${items} item.`)
         } else {
-        alert(`Agregaste ${items} items.`)
+            alert(`Agregaste ${items} items.`)
         }
     }
 
     return (
-        <Container className="ItemCounterContainer">
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>{producto}</Card.Title>
-                    <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text>
-                    <div className="buttonsContainer">
-                        <Button variant="secondary"onClick={removeItems}>-</Button>
-                        <div className="">Cant: {items}</div>
-                        <Button variant="primary" onClick={addItems}>+</Button>
-                    </div>
-                    <Button variant="primary" onClick={respuesta}>Agregar al carrito</Button>
-                </Card.Body>
-            </Card>
-        </Container>
+        <>
+                <div className="qtyContainer">Cant: {items}</div>
+            <div className="buttonsContainer mb-3">
+                <Button variant="secondary" className="btnRemoveItem" onClick={removeItems}>-</Button>
+                <Button variant="success" className="btnAddToCart" onClick={respuesta}>Agregar al carrito</Button>
+                <Button variant="primary" className="btnAddItem" onClick={addItems}>+</Button>
+            </div>
+        </>
     )
 }

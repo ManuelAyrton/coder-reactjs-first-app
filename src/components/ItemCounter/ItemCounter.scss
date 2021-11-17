@@ -1,9 +1,28 @@
-.ItemCounterContainer{
-    text-align: -webkit-center;
+.qtyContainer{
+    margin-bottom: 1rem;
 }
 .buttonsContainer{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+.btnRemoveItem{
+    border-radius: 20px!important;
+    border-bottom-right-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
+.btnAddToCart{
+    border-radius: 0!important;
+}
+.btnAddItem{
+    border-radius: 20px!important;
+    border-bottom-left-radius: 0!important;
+    border-top-left-radius: 0!important;
+}
+.btnRemoveItem, .btnAddToCart, .btnAddItem{
+    transition: 0.3s all ease 0s;
+    &:hover{
+        opacity: 0.7;
+    }
 }
