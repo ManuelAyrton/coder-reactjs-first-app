@@ -1,22 +1,46 @@
 import { Container } from 'react-bootstrap'
-import { ProductCard } from '../ProductCard/ProductCard'
 import './ItemListContainer.scss'
-import Buzo from "../../assets/products/buzo.jpg"
-import Campera from "../../assets/products/campera.jpg"
-import Cargo from "../../assets/products/cargo.jpg"
+import { useEffect, useState } from 'react'
+import { pedirDatos } from '../../helpers/pedirDatos'
+import { ItemList } from '../ItemList/ItemList'
+
+
 
 export const ItemListContainer = ({greeting}) => {
 
+    const [loading, setLoading] = useState(false)
+    const [products, setProducts] = useState([])
+
+
+    useEffect(() => {
+
+        setLoading(true)
+        pedirDatos()
+            .then( (resp) => {
+                setProducts(resp)
+            })
+            .catch( (error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+
+    }, [])
 
     return (
         <Container className="ItemListContainer mt-5">
             <h1>{greeting}</h1>
             <hr/>
-            <div className="row row-grid justify-content-between">
-                <ProductCard src={Buzo} product="BUZO" stock="6"/>
-                <ProductCard src={Campera} product="CAMPERA" stock="4"/>
-                <ProductCard src={Cargo} product="CARGO" stock="2"/>
-            </div>
+
+            {
+                loading
+                ? <h2>Cargando...</h2>
+                : <>
+                    <ItemList products={products}/>
+                </>
+            }
+
         </Container>
     )
 }

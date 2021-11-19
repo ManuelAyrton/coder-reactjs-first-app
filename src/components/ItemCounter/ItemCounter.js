@@ -3,14 +3,15 @@ import './ItemCounter.scss'
 import Button from 'react-bootstrap/Button'
 
 
-export const ItemCounter = ({stock}) => {
+
+export const ItemCounter = ({prod}) => {
 
     let [items, setItems] = useState(0)
 
-    console.log(items)
+    console.log(prod)
 
     const addItems = () => {
-        if( stock > items ){
+        if( prod.stock > items ){
         setItems( items + 1 )
         } else{
             alert("No hay más stock.")
@@ -51,7 +52,7 @@ export const ItemCounter = ({stock}) => {
 
     return (
         <>
-                <div className="qtyContainer">Cant: {items}</div>
+            <div className="qtyContainer">Cant: {items}</div>
             <div className="buttonsContainer mb-3">
                 <Button variant="secondary" className="btnRemoveItem" onClick={removeItems}>-</Button>
                 <Button variant="success" className="btnAddToCart" onClick={respuesta}>Agregar al carrito</Button>
