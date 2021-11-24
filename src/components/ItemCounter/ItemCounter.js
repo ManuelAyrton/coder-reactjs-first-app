@@ -53,7 +53,7 @@ export const ItemCounter = ({prod}) => {
     return (
         <>
             <div className="qtyContainer">Cant: {items}</div>
-            <div className="buttonsContainer mb-3">
+            <div className="buttonsContainer mb-3 justify-content-center">
                 <Button variant="secondary" className="btnRemoveItem" onClick={removeItems}>-</Button>
                 <Button variant="success" className="btnAddToCart" onClick={respuesta}>Agregar al carrito</Button>
                 <Button variant="primary" className="btnAddItem" onClick={addItems}>+</Button>

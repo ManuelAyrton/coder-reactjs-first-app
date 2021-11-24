@@ -9,3 +9,13 @@ export const pedirDatos = () => {
 
     })
 }
+
+export const pedirUnDato = (id) => {
+    return new Promise (( resolve, reject ) => {
+        setTimeout(() => {
+            const foundProduct = stock.find(p => p.id === id)
+            resolve(foundProduct)
+        }, 2000)
+
+    })
+}

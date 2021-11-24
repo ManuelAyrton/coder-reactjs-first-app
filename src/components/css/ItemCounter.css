@@ -32,4 +32,8 @@
 .btnRemoveItem:hover, .btnAddToCart:hover, .btnAddItem:hover {
   opacity: 0.7;
 }
+
+.detailButton {
+  border-radius: 20px !important;
+}
 /*# sourceMappingURL=ItemCounter.css.map */
