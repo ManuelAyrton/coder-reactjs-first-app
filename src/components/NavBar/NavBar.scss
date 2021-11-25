@@ -14,7 +14,7 @@
 }
 .brand{
     align-self: center;
-    margin-left: 5%;
+    margin: 0 30px;
     font-size: 3rem!important;
     color: #dd9f00!important;
     font-weight: 700;
@@ -34,7 +34,6 @@
     flex-direction: row;
     padding: 0.5em 0;
     margin: 0 2rem;
-    justify-content: space-between;
 }
 .nav-link{
     color: #bdbdbd!important;
@@ -42,6 +41,9 @@
 }
 .nav-link, .navbar-nav{
     margin: 0 20px;
+}
+.navbar-collapse{
+    flex-grow: 0!important;
 }
 .dropdown-menu{
     border-radius: 20px!important;
@@ -51,20 +53,35 @@
     border-top: 5px solid #bb3f3f!important;
     border-bottom: 5px solid #bb3f3f!important;
 }
-.dropdown-item{
+.liContainer{
+    text-align: center;
     transition: 0.2s all ease 0s;
     &:hover{
         background: #dd9f00!important;
 
     }
 }
+.liLinks{
+    text-decoration: none;
+    color: #272727;
+    margin: auto;
+}
 #contactoButton{
+    background-color: rgba(82, 82, 82, 0.7);
+    font-weight: 700;
     color: #bdbdbd;
     text-decoration: none;
     align-self: center;
     border-radius: 20px;
-    padding: 0.3em 0.5em;
+    padding: 0.5em 0.75em;
     transition: 0.3s all 0s ease-in-out;
+    border: 0;
+    margin: 0 30px;
+    transition: 0.3s all ease 0s;
+    &:hover{
+        transform: scale(1.1);
+        background-color: rgb(82, 82, 82)
+    }
 }
 
 

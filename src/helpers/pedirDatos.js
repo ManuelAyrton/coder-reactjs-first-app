@@ -1,5 +1,5 @@
 import { stock } from "../assets/data/stock"
-
+import { itemId } from "../components/ItemDetailContainer/ItemDetailContainer.js"
 
 export const pedirDatos = () => {
     return new Promise (( resolve, reject ) => {
@@ -10,10 +10,12 @@ export const pedirDatos = () => {
     })
 }
 
-export const pedirUnDato = (id) => {
+export const pedirUnDato = (itemId) => {
+
+
     return new Promise (( resolve, reject ) => {
         setTimeout(() => {
-            const foundProduct = stock.find(p => p.id === id)
+            const foundProduct = stock.find( prod => prod.id === Number(itemId) )
             resolve(foundProduct)
         }, 2000)
 

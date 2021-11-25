@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import { pedirUnDato } from '../../helpers/pedirDatos'
 import { ItemDetail } from '../ItemDetail/ItemDetail'
 
 
 
-
 export const ItemDetailContainer = () => {
 
-    const [loading, setLoading] = useState(false)
     const [product, setProduct] = useState({})
+    const [loading, setLoading] = useState(false)
 
+    const { itemId } = useParams()
 
     useEffect(() => {
 
         setLoading(true)
-        pedirUnDato(1)
-            .then( (response) => {
-                setProduct(response)
+        pedirUnDato(itemId)
+            .then( (resp) => {
+                setProduct(resp)
             })
             .catch ( (error) => {
                 console.log(error)
@@ -32,7 +33,7 @@ export const ItemDetailContainer = () => {
         <>
             {
                 loading
-                    ? <h2>Cargando...</h2>
+                    ? <h2 className="mt-5">Cargando...</h2>
                     : <>
                         <ItemDetail key={product.id} product={product} />
                     </>

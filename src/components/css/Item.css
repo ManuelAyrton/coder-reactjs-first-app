@@ -1,9 +1,50 @@
+.itemLinkContainer {
+  padding: 0 !important;
+  height: 450px;
+  width: min-content !important;
+  text-decoration: none;
+  color: #bdbdbd;
+  transition: 0.3s all ease 0s;
+}
+
+.itemLinkContainer:hover {
+  transform: scale(1.05);
+  color: inherit;
+}
+
 .cardContainer {
+  margin: 0 !important;
+  padding: 0 !important;
   background-color: #313131 !important;
   border-radius: 35px !important;
+  border-top: 5px solid #bb3f3f !important;
+  border-bottom: 5px solid #bb3f3f !important;
+  width: 18rem;
+  cursor: pointer;
+  height: 450px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  color: darkgoldenrod;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
 }
 
 .cardImg {
   border-radius: 25px !important;
+}
+
+.cardPrice {
+  font-size: 1.2rem;
+}
+
+.cardPrice span {
+  color: darkgoldenrod;
 }
 /*# sourceMappingURL=Item.css.map */

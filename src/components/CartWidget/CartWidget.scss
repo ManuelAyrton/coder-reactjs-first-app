@@ -1,12 +1,16 @@
+.cartWidgetContainer{
+    height: 51px!important;
+    width: 51px!important;
+    display: flex;
+}
 .CartWidget{
     align-self: center;
-    margin-right: 5%;
     font-size: 1.4rem;
-    border: 2px solid #bdbdbd;
     border-radius: 30px;
     padding: 0.4em 0.65em;
-    background: rgba(187, 62, 62, 0.5);
-    transition: 0.3s cubic-bezier(0.36, -1.16, 0.61, 2.39) 0s all;
+    background: rgba(187, 62, 62, 0.7);
+    transition: 0.3s all ease 0s;
+    width: max-content;
     &:hover{
         transform: scale(1.1);
         background: #bb3f3f;
