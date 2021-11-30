@@ -4,6 +4,7 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { CartView } from './components/CartView/CartView';
+// import { Form } from './components/Form/Form';
 
 
 function App() {
@@ -14,19 +15,19 @@ function App() {
     <BrowserRouter>
       <div className="app">
 
-          <NavBar/>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer greeting="Nuestros Productos" />} />
+          <Route path="/products/:catId" element={<ItemListContainer />} />
+          <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<CartView />} />
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
 
-          <Routes>
-            <Route path="/" element={ <ItemListContainer greeting="Nuestros Productos" /> } />
-            <Route path="/products/:catId" element={ <ItemListContainer/> } />
-            <Route path="/detail/:itemId" element={ <ItemDetailContainer/> } />
-            <Route path="/cart" element={ <CartView/> } />
-            <Route path="/*" element={ <Navigate to="/" /> } />
-          </Routes>
+        {/* <Form/> */}
+        {/* <Footer/> */}
 
-          {/* <Footer/> */}
-
-        </div>
+      </div>
     </BrowserRouter>
   );
 }

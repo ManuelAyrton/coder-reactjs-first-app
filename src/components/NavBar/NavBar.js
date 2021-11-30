@@ -13,16 +13,16 @@ export default function NavBar() {
                 <div><Link to="/" className="brand">ALMOST</Link></div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <NavDropdown title="Productos" id="basic-nav-dropdown">
-                    <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/tops">Prendas Superiores</Link></NavDropdown.Item>
-                    <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/bottoms">Prendas Inferiores</Link></NavDropdown.Item>
-                    <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/accessories">Accesorios</Link></NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link>Sobre nosotros</Nav.Link>
-                <Button id="contactoButton">Contacto</Button>
-            <CartWidget />
-            </Navbar.Collapse>
-        </Navbar>
+                    <NavDropdown title="Productos" id="basic-nav-dropdown">
+                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/tops">Prendas Superiores</Link></NavDropdown.Item>
+                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/bottoms">Prendas Inferiores</Link></NavDropdown.Item>
+                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/accessories">Accesorios</Link></NavDropdown.Item>
+                    </NavDropdown>
+                    <Nav.Link>Sobre nosotros</Nav.Link>
+                    <Button id="contactoButton">Contacto</Button>
+                    <CartWidget />
+                </Navbar.Collapse>
+            </Navbar>
         </>
 
     )

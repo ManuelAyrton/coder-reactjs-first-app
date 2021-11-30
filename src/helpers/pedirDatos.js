@@ -1,5 +1,4 @@
 import { stock } from "../assets/data/stock"
-import { itemId } from "../components/ItemDetailContainer/ItemDetailContainer.js"
 
 export const pedirDatos = () => {
     return new Promise (( resolve, reject ) => {

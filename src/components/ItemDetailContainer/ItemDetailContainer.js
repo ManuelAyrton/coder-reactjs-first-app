@@ -16,17 +16,17 @@ export const ItemDetailContainer = () => {
 
         setLoading(true)
         pedirUnDato(itemId)
-            .then( (resp) => {
+            .then((resp) => {
                 setProduct(resp)
             })
-            .catch ( (error) => {
+            .catch((error) => {
                 console.log(error)
             })
             .finally(() => {
                 setLoading(false)
             })
 
-    }, [])
+    }, [itemId])
 
 
     return (
