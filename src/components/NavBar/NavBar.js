@@ -14,9 +14,9 @@ export default function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <NavDropdown title="Productos" id="basic-nav-dropdown">
-                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/tops">Prendas Superiores</Link></NavDropdown.Item>
-                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/bottoms">Prendas Inferiores</Link></NavDropdown.Item>
-                        <NavDropdown.Item className="liContainer" ><Link className="liLinks" to="products/accessories">Accesorios</Link></NavDropdown.Item>
+                        <Link className="liLinks dropdown-item" to="products/tops">Prendas Superiores</Link>
+                        <Link className="liLinks dropdown-item" to="products/bottoms">Prendas Inferiores</Link>
+                        <Link className="liLinks dropdown-item" to="products/accessories">Accesorios</Link>
                     </NavDropdown>
                     <Nav.Link>Sobre nosotros</Nav.Link>
                     <Button id="contactoButton">Contacto</Button>

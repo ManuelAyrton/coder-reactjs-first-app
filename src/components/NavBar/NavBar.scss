@@ -53,18 +53,19 @@
     border-top: 5px solid #bb3f3f!important;
     border-bottom: 5px solid #bb3f3f!important;
 }
-.liContainer{
+.dropdown-toggle::after{
+    vertical-align: middle!important;
+}
+.liLinks{
+    text-decoration: none;
+    color: #272727;
+    margin: auto;
     text-align: center;
     transition: 0.2s all ease 0s;
     &:hover{
         background: #dd9f00!important;
 
     }
-}
-.liLinks{
-    text-decoration: none;
-    color: #272727;
-    margin: auto;
 }
 #contactoButton{
     background-color: rgba(82, 82, 82, 0.7);

@@ -1,28 +1,28 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../context/CartContext/CartContext'
 import { ItemCounter } from '../ItemCounter/ItemCounter'
 import './itemDetail.scss'
 
 
 export const ItemDetail = ({ product }) => {
 
+    const {addToCart, isInCart} = useContext(CartContext)
+
+
     const [items, setItems] = useState(0)
-    const [agregado, setAgregado] = useState(false)
 
     const handleAdd = () => {
         if (items > 0) {
-            console.log('Item agregado:', [
-                `ID: ${product.id}`,
-                product.name,
-                product.desc,
-                `Precio: $ ${product.price}`,
-                `Cantidad: ${items}`
-            ])
-
-            setAgregado(true)
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                imgSm: product.imgSm,
+                items
+            })
         }
-
     }
 
     return (
@@ -38,7 +38,7 @@ export const ItemDetail = ({ product }) => {
                     <div>
 
                         {
-                            !agregado
+                            !isInCart(product.id)
                                 ? <>
                                     <div>Stock: {product.stock}</div>
                                     <ItemCounter prod={product} items={items} setItems={setItems} handleAdd={handleAdd} />

@@ -4,31 +4,33 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { CartView } from './components/CartView/CartView';
+import { CartProvider } from './components/context/CartContext/CartContext';
+import { DarkModeProvider } from './components/context/CartContext/DarkModeContext/DarkModeContext';
 // import { Form } from './components/Form/Form';
 
 
 function App() {
 
 
-
   return (
-    <BrowserRouter>
-      <div className="app">
-
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Nuestros Productos" />} />
-          <Route path="/products/:catId" element={<ItemListContainer />} />
-          <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<CartView />} />
-          <Route path="/*" element={<Navigate to="/" />} />
-        </Routes>
-
-        {/* <Form/> */}
-        {/* <Footer/> */}
-
-      </div>
-    </BrowserRouter>
+    <DarkModeProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <div className="app">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<ItemListContainer greeting="Nuestros Productos" />} />
+              <Route path="/products/:catId" element={<ItemListContainer />} />
+              <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
+              <Route path="/cart" element={<CartView />} />
+              <Route path="/*" element={<Navigate to="/" />} />
+            </Routes>
+            {/* <Form/> */}
+            {/* <Footer/> */}
+          </div>
+        </BrowserRouter>
+      </CartProvider>
+    </DarkModeProvider>
   );
 }
 

@@ -59,19 +59,20 @@
   border-bottom: 5px solid #bb3f3f !important;
 }
 
-.liContainer {
-  text-align: center;
-  transition: 0.2s all ease 0s;
-}
-
-.liContainer:hover {
-  background: #dd9f00 !important;
+.dropdown-toggle::after {
+  vertical-align: middle !important;
 }
 
 .liLinks {
   text-decoration: none;
   color: #272727;
   margin: auto;
+  text-align: center;
+  transition: 0.2s all ease 0s;
+}
+
+.liLinks:hover {
+  background: #dd9f00 !important;
 }
 
 #contactoButton {

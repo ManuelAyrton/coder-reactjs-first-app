@@ -15,7 +15,6 @@ export const ItemListContainer = ({greeting}) => {
     const { catId } = useParams()
 
 
-
     useEffect(() => {
 
         setLoading(true)
@@ -37,6 +36,7 @@ export const ItemListContainer = ({greeting}) => {
             })
 
     }, [catId])
+
 
     return (
         <Container className="ItemListContainer my-5">

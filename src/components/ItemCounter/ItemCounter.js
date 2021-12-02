@@ -7,9 +7,6 @@ import Button from 'react-bootstrap/Button'
 export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
 
 
-
-
-
     console.log(prod)
 
     const addItems = () => {
