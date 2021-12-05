@@ -2,19 +2,18 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext/CartContext'
 import { CartItem } from './CartItem'
+import './CartView.scss'
 
 export const CartView = () => {
 
-    const { cart, emptyCart } = useContext(CartContext)
+    const { cart, emptyCart, totalCart } = useContext(CartContext)
 
     return (
         <div className="mt-4">
             {
                 cart.length > 0
                     ? <>
-                        <h2 >Cart View</h2>
-
-                        <hr />
+                        <h2 >Carrito</h2>
 
                         <section>
                             {
@@ -23,6 +22,10 @@ export const CartView = () => {
                         </section>
 
                         <hr />
+
+                        <div className="container totalPrice">TOTAL: <span>$ {totalCart()}</span></div>
+
+                        <hr/>
 
                         <div>
                             <button className="btn btn-danger" onClick={emptyCart}>Vaciar carrito</button>

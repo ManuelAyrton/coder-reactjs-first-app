@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import './ItemCounter.scss'
 import Button from 'react-bootstrap/Button'
+import { btnConfig } from './btnConfig'
+
 
 
 
@@ -9,7 +11,7 @@ export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
 
     console.log(prod)
 
-    const addItems = () => {
+    const addItem = () => {
         if (prod.stock > items) {
             setItems(items + 1)
         } else {
@@ -17,7 +19,7 @@ export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
         }
     }
 
-    const removeItems = () => {
+    const removeItem = () => {
         if (items > 0) {
             setItems(items - 1)
         } else {
@@ -49,13 +51,28 @@ export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
         }
     }
 
+    const config = btnConfig(items, prod, removeItem, addItem)
+
     return (
         <>
             <div className="qtyContainer">Cant: {items}</div>
             <div className="buttonsContainer mb-3 justify-content-center">
-                <Button variant="secondary" className="btnRemoveItem" onClick={removeItems}>-</Button>
-                <Button variant="success" className="btnAddToCart" onClick={() => { handleAdd(); respuesta() }} > Agregar al carrito</Button>
-                <Button variant="primary" className="btnAddItem" onClick={addItems}>+</Button>
+                <Button {...config.remove}>
+                    -
+                </Button>
+
+                <Button
+                    variant="success"
+                    className="btnAddToCart"
+                    disabled={items === 0}
+                    onClick={() => { handleAdd(); respuesta() }}
+                >
+                    Agregar al carrito
+                </Button>
+
+                <Button {...config.add}>
+                    +
+                </Button>
             </div>
         </>
     )

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { pedirUnDato } from '../../helpers/pedirDatos'
 import { ItemDetail } from '../ItemDetail/ItemDetail'
+import { Loader } from '../Loader/Loader'
 
 
 
@@ -33,7 +34,7 @@ export const ItemDetailContainer = () => {
         <>
             {
                 loading
-                    ? <h2 className="mt-5">Cargando...</h2>
+                    ? <Loader/>
                     : <>
                         <ItemDetail key={product.id} product={product} />
                     </>

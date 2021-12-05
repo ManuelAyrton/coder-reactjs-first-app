@@ -3,8 +3,11 @@
     width: 51px!important;
     display: flex;
     text-decoration: none;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s all ease-in-out 0s;
 }
-.CartWidget{
+.cartWidget{
     align-self: center;
     font-size: 1.4rem;
     border-radius: 30px;
@@ -17,7 +20,7 @@
         background: #bb3f3f;
     }
 }
-.CartWidget svg{
+.cartWidget svg{
     padding-right: 2px;
     color: #dd9f00;
     cursor: pointer;
@@ -26,4 +29,10 @@
     font-size: 1.3rem;
     padding-left: 5px;
     color: #bdbdbd;
+}
+.hidden {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition:  0.3s all ease-in-out 0s;
 }

@@ -5,7 +5,7 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { CartView } from './components/CartView/CartView';
 import { CartProvider } from './components/context/CartContext/CartContext';
-import { DarkModeProvider } from './components/context/CartContext/DarkModeContext/DarkModeContext';
+import { DarkModeProvider } from './components/context/DarkModeContext/DarkModeContext.js';
 // import { Form } from './components/Form/Form';
 
 

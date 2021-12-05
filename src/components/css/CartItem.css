@@ -1,0 +1,30 @@
+.cartItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartItemp {
+  margin: 0;
+}
+
+.cartItemImg {
+  border-radius: 10px;
+  height: 80px;
+}
+
+.cartItemName {
+  color: #b8860b;
+}
+
+.cartItemName, .cartItemQty, .cartItemPrice {
+  width: 15%;
+  margin: 0;
+}
+
+button.FaTrashAlt {
+  height: 45px;
+  width: 45px;
+  border-radius: 25px;
+}
+/*# sourceMappingURL=CartItem.css.map */

@@ -6,11 +6,11 @@ import './CartWidget.scss'
 
 export const CartWidget = () => {
 
-    const {totalQty} = useContext(CartContext)
+    const {totalQty, cart} = useContext(CartContext)
 
     return (
-        <Link className="cartWidgetContainer mt-sm-2 mt-lg-0 mx-sm-auto mx-lg-4" to="/cart">
-            <div className="CartWidget d-flex align-items-center">
+        <Link className={cart.length === 0 ? 'hidden' : 'cartWidgetContainer mt-sm-2 mt-lg-0 mx-sm-auto mx-lg-4'} to="/cart">
+            <div className="cartWidget d-flex align-items-center">
                 <FiShoppingCart/>
                 <span className="totalQtySpan">{totalQty()}</span>
             </div>
