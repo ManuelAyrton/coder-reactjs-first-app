@@ -36,7 +36,7 @@ export const CartView = () => {
                     : <>
                         <h2>No agregaste items al carrito al carrito aún</h2>
                         <hr/>
-                        <Link to="/" className="btn btn-primary">Volver</Link>
+                        <Link to="/" className="btn btn-secondary">Volver</Link>
                     </>
             }
 

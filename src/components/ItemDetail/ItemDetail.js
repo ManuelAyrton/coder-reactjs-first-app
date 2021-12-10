@@ -6,42 +6,42 @@ import { ItemCounter } from '../ItemCounter/ItemCounter'
 import './itemDetail.scss'
 
 
-export const ItemDetail = ({ product }) => {
+export const ItemDetail = ({ id, name, imgSm, imgLg, desc, price, stock }) => {
 
     const {addToCart, isInCart} = useContext(CartContext)
 
 
-    const [items, setItems] = useState(0)
+    const [itemQty, setItemQty] = useState(0)
 
     const handleAdd = () => {
-        if (items > 0) {
+        if (itemQty > 0) {
             addToCart({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                imgSm: product.imgSm,
-                items
+                id,
+                name,
+                price,
+                imgSm,
+                itemQty
             })
         }
     }
 
     return (
-        <Container key={product.id} className="py-5 " >
+        <Container key={id} className="py-5 " >
             <div className="d-flex flex-sm-column flex-lg-row justify-content-center" >
-                <img className="itemDetailImg mx-5" src={product.imgLg} alt={product.name} />
+                <img className="itemDetailImg mx-5" src={imgLg} alt={name} />
                 <div className="itemInfoContainer mt-5 flex-sm-row flex-lg-column">
                     <div>
-                        <div className="itemDetailTitle" >{product.name}</div>
-                        <div className="itemDetailDesc" >{product.desc}</div>
-                        <p className="itemDetailPrice my-1 " >Precio: <span>$ {product.price}</span></p>
+                        <div className="itemDetailTitle" >{name}</div>
+                        <div className="itemDetailDesc" >{desc}</div>
+                        <p className="itemDetailPrice my-1 " >Precio: <span>$ {price}</span></p>
                     </div>
                     <div>
 
                         {
-                            !isInCart(product.id)
+                            !isInCart(id)
                                 ? <>
-                                    <div>Stock: {product.stock}</div>
-                                    <ItemCounter prod={product} items={items} setItems={setItems} handleAdd={handleAdd} />
+                                    <div>Stock: {stock}</div>
+                                    <ItemCounter stock={stock} itemQty={itemQty} setItemQty={setItemQty} handleAdd={handleAdd} />
                                 </>
 
                                 : <Link to="/cart" className="btn btn-success"> Terminar mi compra</Link>

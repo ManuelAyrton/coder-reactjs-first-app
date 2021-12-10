@@ -6,56 +6,43 @@ import { btnConfig } from './btnConfig'
 
 
 
-export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
+export const ItemCounter = ({ stock, itemQty, setItemQty, handleAdd }) => {
 
-
-    console.log(prod)
 
     const addItem = () => {
-        if (prod.stock > items) {
-            setItems(items + 1)
+        if (stock > itemQty) {
+            setItemQty(itemQty + 1)
         } else {
             alert("No hay más stock.")
         }
     }
 
     const removeItem = () => {
-        if (items > 0) {
-            setItems(items - 1)
+        if (itemQty > 0) {
+            setItemQty(itemQty - 1)
         } else {
             alert("No se puede disminuir más.")
         }
 
     }
-    useEffect(() => {
-        console.log("Me monté")
-
-        return () => {
-            console.log("Me desmonté")
-        }
-
-    }, [])
 
     useEffect(() => {
         console.log("Items actualizados.")
-
-    }, [items])
+    }, [itemQty])
 
     const respuesta = () => {
-        if (items === 0) {
-            alert("No agregaste nada al carrito!")
-        } else if (items === 1) {
-            alert(`Agregaste ${items} item.`)
+        if (itemQty === 1) {
+            alert(`Agregaste ${itemQty} item.`)
         } else {
-            alert(`Agregaste ${items} items.`)
+            alert(`Agregaste ${itemQty} items.`)
         }
     }
 
-    const config = btnConfig(items, prod, removeItem, addItem)
+    const config = btnConfig(itemQty, stock, removeItem, addItem)
 
     return (
         <>
-            <div className="qtyContainer">Cant: {items}</div>
+            <div className="qtyContainer">Cant: {itemQty}</div>
             <div className="buttonsContainer mb-3 justify-content-center">
                 <Button {...config.remove}>
                     -
@@ -64,7 +51,7 @@ export const ItemCounter = ({ prod, items, setItems, handleAdd }) => {
                 <Button
                     variant="success"
                     className="btnAddToCart"
-                    disabled={items === 0}
+                    disabled={itemQty === 0}
                     onClick={() => { handleAdd(); respuesta() }}
                 >
                     Agregar al carrito

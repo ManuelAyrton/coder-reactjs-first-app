@@ -23,11 +23,11 @@ export const CartProvider = ( {children} ) => {
     }
 
     const totalQty = () => {
-        return cart.reduce((acc, prod) => acc + prod.items, 0)
+        return cart.reduce((acc, prod) => acc + prod.itemQty, 0)
     }
 
     const totalCart = () => {
-        return cart.reduce((acc, prod) => acc + prod.price * prod.items, 0)
+        return cart.reduce((acc, prod) => acc + prod.price * prod.itemQty, 0)
     }
 
     const isInCart = (id) => {
@@ -40,8 +40,8 @@ export const CartProvider = ( {children} ) => {
             addToCart,
             removeFromCart,
             emptyCart,
-            isInCart,
             totalQty,
+            isInCart,
             totalCart
         }}>
             {children}

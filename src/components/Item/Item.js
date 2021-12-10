@@ -9,7 +9,7 @@ export const Item = ({prod}) => {
     return (
         <>
             <Link to={`/detail/${prod.id}`} className="itemLinkContainer mx-auto">
-                <Card className="mx-auto cardContainer" style={{  }} >
+                <Card className="mx-auto cardContainer" >
                     <Card.Body>
                         <div>
                             <Card.Img variant="top" className="cardImg mt-2" src={prod.imgSm} alt={prod.name} />

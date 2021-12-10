@@ -1,15 +1,15 @@
-export const btnConfig = (items, prod, removeItem, addItem) => {
+export const btnConfig = (itemQty, stock, removeItem, addItem) => {
     return {
         remove: {
             variant: "secondary",
-            className: `btnRemoveItem ${items === 0 && "btn-dark btn-outline-danger"}`,
-            disabled: items === 0,
+            className: `btnRemoveItem ${itemQty === 0 && "btn-dark btn-outline-danger"}`,
+            disabled: itemQty === 0,
             onClick: removeItem
         },
         add: {
             variant: "primary",
-            className: `btnAddItem ${items === prod.stock && "btn-dark btn-outline-danger"}`,
-            disabled: items === prod.stock,
+            className: `btnAddItem ${itemQty === stock && "btn-dark btn-outline-danger"}`,
+            disabled: itemQty === stock,
             onClick: addItem
         }
     }

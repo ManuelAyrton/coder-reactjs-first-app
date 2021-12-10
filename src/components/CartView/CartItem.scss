@@ -17,8 +17,15 @@
     width: 15%;
     margin: 0;
 }
+.cartItemQty, .cartItemPrice{
+    font-size: 1.4rem;
+}
 button.FaTrashAlt{
     height: 45px;
     width: 45px;
     border-radius: 25px;
+    transition:  0.3s all ease 0s;
+    &:hover{
+        transform: scale(1.1);
+    }
 }
