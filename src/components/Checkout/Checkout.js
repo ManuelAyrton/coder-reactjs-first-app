@@ -1,151 +1,108 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
 import { CartContext } from '../context/CartContext/CartContext'
-import { validarDatos } from '../../helpers/validarDatos'
-import { db } from '../../firebase/config'
-import { addDoc, collection, documentId, getDocs, query, Timestamp, where, writeBatch } from 'firebase/firestore/lite'
-import Swal from 'sweetalert2'
+import { generateOrder } from '../../firebase/generateOrder.js'
+import './Checkout.scss'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+
+
+const schema = Yup.object().shape({
+    nombre: Yup.string()
+                .required('Este campo es obligatorio.')
+                .min(3, 'Demasiado corto.')
+                .max(20, 'Demasiado largo.'),
+    apellido: Yup.string()
+                .required('Este campo es obligatorio.')
+                .min(3, 'Demasiado corto.')
+                .max(20, 'Demasiado largo.'),
+    email: Yup.string()
+                .required('Este campo es obligatorio.')
+                .email('Email inválido.'),
+    emailConfirm: Yup.string()
+                .required('Este campo es obligatorio.')
+                .oneOf([Yup.ref('email'), null], 'Los emails no coinciden.')
+})
 
 export const Checkout = () => {
 
     const { cart, totalCart, emptyCart } = useContext(CartContext)
 
-    const [values, setValues] = useState({
+    const initialValues = {
         nombre: '',
         apellido: '',
         email: '',
         emailConfirm: '',
-    })
-
-    const handleInputChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value,
-        })
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        if (!validarDatos(values)) { return }
-
-        const order = {
-            buyer: { ...values },
-            items: cart,
-            total: totalCart(),
-            date: Timestamp.fromDate(new Date())
-        }
-
-        const batch = writeBatch(db)
-
-        const ordersRef = collection(db, 'orders')
-        const productsRef = collection(db, 'productos')
-        const q = query(productsRef, where(documentId(), 'in', cart.map(el => el.id)))
-
-        const outOfStock = []
-
-        const products = await getDocs(q)
-
-        products.docs.forEach((doc) => {
-            const itemToUpdate = cart.find((prod) => prod.id === doc.id)
-
-            if (doc.data().stock >= itemToUpdate.itemQty) {
-                batch.update(doc.ref, {
-                    stock: doc.data().stock - itemToUpdate.itemQty
-                })
-            } else {
-                outOfStock.push(itemToUpdate)
-            }
-        })
-
-            if (outOfStock.length === 0) {
-                addDoc(ordersRef, order)
-                    .then((res) => {
-                        batch.commit()
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Su orden ha sido registrada',
-                            text: `Su ID de orden es: ${res.id}`
-                        })
-                        emptyCart()
-                    })
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No hay stock de los siguientes productos:',
-                    text: outOfStock.map(el => el.name).join(', ')
-                })
-            console.log(outOfStock)
-            }
-    }
 
     return (
 
-        <>
-            {cart.length === 0
-                ? <Navigate to="/" />
-                : <div className='container mt-5'>
-                    <h2>Resumen de compra</h2>
-                    <hr />
+        <> {cart.length === 0
+            ? <Navigate to="/" />
+            : <div className='container mt-5'>
+                <h2>Complete sus datos para realizar su pedido.</h2>
+                <hr />
 
-                    <form className="container m-5 m-auto" onSubmit={handleSubmit}>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={schema}
+                    onSubmit={(values) => {
+                        generateOrder(values, cart, totalCart, emptyCart)
+                    }}
+                >
+                    {(formik) => (
 
-                        <input
-                            onChange={handleInputChange}
-                            name="nombre"
-                            value={values.nombre}
-                            className="form-control my-2"
-                            type="text"
-                            placeholder="nombre"
-                        />
-                        {values.nombre.length < 4 && <small>Nombre inválido</small>}
+                        <form className="container m-5 m-auto formDiv" onSubmit={formik.handleSubmit}>
 
-                        <input
-                            onChange={handleInputChange}
-                            name="apellido"
-                            value={values.apellido}
-                            className="form-control my-2"
-                            type="text"
-                            placeholder="apellido"
-                        />
-                        {values.apellido.length < 4 && <small>Apellido inválido</small>}
+                            <div className='formDivFormik'>
+                                <input
+                                    onChange={formik.handleChange}
+                                    name="nombre"
+                                    value={formik.values.nombre}
+                                    className="form-control my-2"
+                                    type="text"
+                                    placeholder="Nombre/s"
+                                />
+                                {formik.errors.nombre && <small>{formik.errors.nombre}</small>}
 
-                        <input
-                            onChange={handleInputChange}
-                            name="email"
-                            value={values.email}
-                            className="form-control my-2"
-                            type="email"
-                            placeholder="email"
-                        />
-                        {values.email.length < 4 && <small>Email inválido</small>}
+                                <input
+                                    onChange={formik.handleChange}
+                                    name="apellido"
+                                    value={formik.values.apellido}
+                                    className="form-control my-2"
+                                    type="text"
+                                    placeholder="Apellido/s"
+                                />
+                                {formik.errors.apellido && <small>{formik.errors.apellido}</small>}
 
-                        <input
-                            onChange={handleInputChange}
-                            name="emailConfirm"
-                            value={values.emailConfirm}
-                            className="form-control my-2"
-                            type="email"
-                            placeholder="Repetir email"
-                        />
-                        {values.emailConfirm !== values.email && <small>Email no coincide</small>}
+                                <input
+                                    onChange={formik.handleChange}
+                                    name="email"
+                                    value={formik.values.email}
+                                    className="form-control my-2"
+                                    type="email"
+                                    placeholder="Email"
+                                />
+                                {formik.errors.email && <small>{formik.errors.email}</small>}
 
-                        <button type="submit" className="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
-            }
+                                <input
+                                    onChange={formik.handleChange}
+                                    name="emailConfirm"
+                                    value={formik.values.emailConfirm}
+                                    className="form-control my-2"
+                                    type="email"
+                                    placeholder="Repetir email"
+                                />
+                                {formik.errors.emailConfirm && <small>{formik.errors.emailConfirm}</small>}
+                            </div>
+
+                            <button type="submit" className="btn btn-primary">Enviar</button>
+                        </form>
+                    )}
+                </Formik>
+            </div>
+        }
         </>
     )
 }
-
-
-
-// cart.forEach((prod) => {
-//     const docRef = doc(productsRef, prod.id)
-//     getDoc(docRef)
-//         .then((doc) => {
-//             updateDoc(doc.ref, {
-//                 stock: doc.data().stock - prod.cantidad
-//             })
-//         })
-// })

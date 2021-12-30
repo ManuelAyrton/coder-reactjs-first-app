@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react'
 
 export const CartContext = createContext()
 
-// custom provider
+// custom provider (personalizado)
 
 export const CartProvider = ( {children} ) => {
 
